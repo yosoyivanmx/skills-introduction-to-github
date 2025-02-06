@@ -1,0 +1,21 @@
+import javax.swing.JOptionPane;
+ 
+public class EmpleadoSDI {
+    public static void main (String[]args){
+        double sueldoMes, sueldoDia, sueldoDI;
+        double vacaciones, aguinaldo, prima;
+        double factorSDI;
+        sueldoMes = Double.parseDouble(JOptionPane.showInputDialog("Ingresa tu sueldo mensual incluyendo los centavos:"));
+        sueldoDia = sueldoMes /30;
+        vacaciones = Double.parseDouble(JOptionPane.showInputDialog("¿Cuántos días de vacaciones tienes?"));
+        prima = Double.parseDouble(JOptionPane.showInputDialog("¿Cuál es tu prima vacacional?"));
+        aguinaldo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuántos días de aguinaldo te pagan al año?"));
+        factorSDI = ((prima/100)*vacaciones)+aguinaldo + 365;
+        sueldoDI = (factorSDI / 365) * sueldoDia;
+        String msg = String.format("%s %.2f %s\n%s %.2f \n%s %.2f\n%s %.2f",
+                "Con el sueldo mensual de $ ", sueldoMes, "y los beneficios mencionados",
+                "El factor para el Sueldo Diario Integrado es de ",factorSDI,
+                "Y el Sueldo Diario Integrado es de: $ ",sueldoDI, "Contra un sueldo diario de $ ", sueldoDia);
+        JOptionPane.showMessageDialog(null, msg);
+    }
+}
